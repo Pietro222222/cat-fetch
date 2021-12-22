@@ -29,7 +29,7 @@ BUFFER;
 printf(" /'._        \t%s", cpu());
 printf("(° o 7       \t%s\n", uptime());
 printf(" |'-'\"~.  ,  \t%s", distro());
-printf(" Uu^~(_J._.\" \t%s\n", wm());
+printf(" Uu^~(_J._.\" \t%s", wm());
 
 return 0;
 }
