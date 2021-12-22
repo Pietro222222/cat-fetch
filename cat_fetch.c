@@ -79,7 +79,7 @@ char * wm() {
     BUFFER;
     char space[] = " ";
     char * cmd = malloc((sizeof(char) * 256));
-    char * wm_name[5] = {"i3", "i3-gaps", "awesome", "sway", "worm", "dwm", "qtile", "bspwm", "openbox", "xmonad"};
+    char * wm_name[10] = {"i3", "i3-gaps", "awesome", "sway", "worm", "dwm", "qtile", "bspwm", "openbox", "xmonad"};
     char pgrep_cmd[] = "/bin/pgrep -l ";
     int j = 0;
     FILE * pgrep;
