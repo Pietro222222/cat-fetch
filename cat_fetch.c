@@ -14,25 +14,6 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 #include <stdlib.h>
 #include <string.h>
 
-// Declare functions
-char * cpu();
-char * uptime();
-char * distro();
-char uppercase(char letter);
-char * wm();
-void cat();
-
-
-// MAIN FUNCTION
-int main() {
-BUFFER;
-printf(" /'._        \t%s", cpu());
-printf("(° o 7       \t%s\n", uptime());
-printf(" |'-'\"~.  ,  \t%s", distro());
-printf(" Uu^~(_J._.\" \t%s", wm());
-
-return 0;
-}
 
 // CPU info function
 char * cpu() {
@@ -98,7 +79,7 @@ char * wm() {
     BUFFER;
     char space[] = " ";
     char * cmd = malloc((sizeof(char) * 256));
-    char * wm_name[4] = {"i3", "awesome", "sway", "worm"};
+    char * wm_name[5] = {"i3", "i3-gaps", "awesome", "sway", "worm", "dwm", "qtile", "bspwm", "openbox", "xmonad"};
     char pgrep_cmd[] = "/bin/pgrep -l ";
     int j = 0;
     FILE * pgrep;
@@ -122,4 +103,15 @@ char * wm() {
     }
     fclose(pgrep);
     return buffer;
+}
+
+// MAIN FUNCTION
+int main() {
+BUFFER;
+printf(" /'._        \t%s", cpu());
+printf("(° o 7       \t%s\n", uptime());
+printf(" |'-'\"~.  ,  \t%s", distro());
+printf(" Uu^~(_J._.\" \t%s", wm());
+
+return 0;
 }
