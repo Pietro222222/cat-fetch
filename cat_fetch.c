@@ -14,6 +14,11 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 #include <stdlib.h>
 #include <string.h>
 
+// Uppercase function because yes
+char uppercase(char letter) {
+    // made with the help of Eisenchan!
+    return letter >= 'a' && letter <= 'z' ? letter & ~32 : letter;
+}
 
 // CPU info function
 char * cpu() {
@@ -66,12 +71,6 @@ char * distro() {
     buffer[0] = uppercase(buffer[0]);
     fclose(distro);
     return buffer;
-}
-
-// Uppercase function because yes
-char uppercase(char letter) {
-    // made with the help of Eisenchan!
-    return letter >= 'a' && letter <= 'z' ? letter & ~32 : letter;
 }
 
 // Window Manager info function
