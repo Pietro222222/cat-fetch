@@ -14,6 +14,7 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <string.h>
 
 // Uppercase function because yes
 char uppercase(char letter) {
@@ -76,9 +77,9 @@ char * distro() {
 
 // Window Manager info function
 char * wm() {
-    if (getenv("XDG_SESSION_DESKTOP") != NULL) {
+    if (strlen(getenv("XDG_SESSION_DESKTOP")) > 0) {
         return getenv("XDG_SESSION_DESKTOP");
-    }else if (getenv("GDMSESSION") != NULL) {
+    }else if (strlen(getenv("GDMSESSION")) > 0) {
         return getenv("GDMSESSION");
     }else {
         return getenv("DESKTOP_SESSION");
