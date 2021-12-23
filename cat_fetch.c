@@ -36,12 +36,6 @@ const char * COLOR_PRIMARY = COLOR_LIGHT_GREEN;
 const char * COLOR_SECONDARY = COLOR_LIGHT_YELLOW;
 const char * COLOR_CAT = COLOR_BLUE;
 
-
-// Libs [just 4!]
-#include <stdio.h>
-#include <stdlib.h>
-#include "config.h"
-#include <string.h>
 // use fontawesome-icons:
 const bool USE_FONTAWESOME_ICONS = true;
 
