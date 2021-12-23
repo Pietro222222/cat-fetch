@@ -1,5 +1,5 @@
 ![ScreenShot of the fetch](cat-fetch.png)
-
+![ScreenShot of the fetch, but now with colors](cat-fetch-color.png)
 # cat-fetch
 A cute, minimal fetch made in C [as my first C program]
 Also Victor Mono is the recomened font for the cat art.
