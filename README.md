@@ -16,3 +16,10 @@ sudo mv cat-fetch /bin/
 ```
 
 after that, you can run catfetch with `cat-fetch` or whatever your compiled binary name was.
+
+# TODO
+
+- [x] add color support
+- [ ] merge with watts version
+- [ ] fix DWM bug
+- [ ] Add more cats with a `--random` flag option
