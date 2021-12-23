@@ -5,7 +5,7 @@ A cute, minimal fetch made in C [as my first C program]
 Also Victor Mono is the recomened font for the cat art.
 
 # Building
-To build, you can use `gcc` (make sure you are in the same folder as the file!):
+To build, you can either use the `install.sh` script, or use `gcc` (make sure you are in the same folder as the file!):
 
 ```
 gcc cat_fetch.c -o cat-fetch
