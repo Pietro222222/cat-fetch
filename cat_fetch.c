@@ -12,6 +12,7 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 // Libs [just 3!]
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 
 // Uppercase function because yes
@@ -75,33 +76,14 @@ char * distro() {
 
 // Window Manager info function
 char * wm() {
-    BUFFER;
-    char space[] = " ";
-    char * cmd = malloc((sizeof(char) * 256));
-    char * wm_name[] = {"i3", "i3-gaps", "awesome", "sway", "worm", "dwm", "qtile", "bspwm", "openbox", "xmonad"};
-    char pgrep_cmd[] = "/bin/pgrep -l ";
-    int j = 0;
-    FILE * pgrep;
-
-    for (int i = 0; i < sizeof(wm_name) / sizeof(wm_name[0] + 5); i++) {
-        strcpy(cmd, pgrep_cmd);
-        strcat(cmd, wm_name[i]);
-        pgrep = popen(cmd, "r");
-        while (fgets(buffer, sizeof(buffer) * 2, pgrep)) {
-
-            while (j < 1)
-            {
-            memmove(buffer, buffer+1, strlen(buffer));
-            
-                if (buffer[0] == space[0]) {
-                    memmove(buffer, buffer+1, strlen(buffer));
-                    j ++;
-                }
-            }
-        }
+    if (getenv("XDG_SESSION_DESKTOP") != NULL) {
+        return getenv("XDG_SESSION_DESKTOP");
+    }else if (getenv("GDMSESSION") != NULL) {
+        return getenv("GDMSESSION");
+    }else {
+        return getenv("DESKTOP_SESSION");
     }
-    fclose(pgrep);
-    return buffer;
+    return (char*) "unknown";
 }
 
 // MAIN FUNCTION
@@ -110,7 +92,7 @@ BUFFER;
 printf(" /'._        \t%s", cpu());
 printf("(° o 7       \t%s\n", uptime());
 printf(" |'-'\"~.  ,  \t%s", distro());
-printf(" Uu^~(_J._.\" \t%s", wm());
+printf(" Uu^~(_J._.\" \t%s\n", wm());
 
 return 0;
 }
