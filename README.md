@@ -19,7 +19,7 @@ after that, you can run catfetch with `cat-fetch` or whatever your compiled bina
 
 # Config
 
-to config it, just modify and rebuild the program.
+to config it, just modify and rebuild the program. Use the `install.sh` script to make things faster.
 
 
 # TODO
