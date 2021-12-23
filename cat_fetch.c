@@ -34,7 +34,7 @@ const char * COLOR_CAT = COLOR_BLUE;
 // Libs [just 4!]
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include "config.h"
 #include <string.h>
 
 // Uppercase function because yes
@@ -102,8 +102,8 @@ char * wm() {
 }
 
 
-// MAIN FUNCTION
-int main() {
+// MAIN FUNCTION. oh really?
+int main(int argc, char** argv) {
 
 BUFFER;
 printf("%s /'._        \t%scpu: \t%s%s", COLOR_CAT ,COLOR_PRIMARY, COLOR_SECONDARY ,cpu());
