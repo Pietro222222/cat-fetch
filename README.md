@@ -28,3 +28,29 @@ to config it, just modify and rebuild the program. Use the `install.sh` script t
 - [ ] merge with watts version
 - [ ] fix DWM bug
 - [ ] Add more cats with a `--random` flag option
+
+
+# Colors
+
+these are the colors you can use in the config file
+```
+default
+black
+red
+green
+yellow
+blue
+magenta
+cyan
+light_gray
+dark_gray
+light_red
+light_green
+light_yellow
+light_blue
+light_magenta
+light_cyan
+white
+```
+
+### NOTE: YOU SHOULD NOT USE UPPERCASE 
