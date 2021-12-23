@@ -5,6 +5,11 @@
 Uu^~C_J._."  
 cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/51151-ascii-art>  
 */
+// Libs [just 4!]
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 
 // Thanks to Zelis for helping me figure out what was a macro
 #define BUFFER char * buffer = malloc((sizeof(char) * 256))
@@ -27,15 +32,13 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 #define COLOR_WHITE "\e[97m"
 
 // define your color
-const char * COLOR_PRIMARY = COLOR_CYAN;
+const char * COLOR_PRIMARY = COLOR_LIGHT_GREEN;
 const char * COLOR_SECONDARY = COLOR_LIGHT_YELLOW;
 const char * COLOR_CAT = COLOR_BLUE;
 
-// Libs [just 4!]
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
+// use fontawesome-icons:
+const bool USE_FONTAWESOME_ICONS = true;
+
 
 // Uppercase function because yes
 char uppercase(char letter) {
@@ -106,10 +109,25 @@ char * wm() {
 int main() {
 
 BUFFER;
-printf("%s /'._        \t%scpu: \t%s%s", COLOR_CAT ,COLOR_PRIMARY, COLOR_SECONDARY ,cpu());
-printf("%s(° o 7       \t%suptime: %s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, uptime());
-printf("%s |'-'\"~.  ,  \t%sdistro: %s%s", COLOR_CAT,COLOR_PRIMARY, COLOR_SECONDARY, distro());
-printf("%s Uu^~(_J._.\" \t%swm: \t%s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, wm());
+if(USE_FONTAWESOME_ICONS == false)
+{
+puts("");
+printf("%s       /'._        \t%scpu: \t%s%s", COLOR_CAT ,COLOR_PRIMARY, COLOR_SECONDARY ,cpu());
+printf("%s      (° o 7       \t%suptime: %s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, uptime());
+printf("%s       |'-'\"~.  ,  \t%sdistro: %s%s", COLOR_CAT,COLOR_PRIMARY, COLOR_SECONDARY, distro());
+printf("%s       Uu^~(_J._.\" \t%swm: \t%s%s\n\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, wm());
+}
+else if(USE_FONTAWESOME_ICONS == true) {
+puts("");
+printf("%s      /'._        \t%s\uf2db  %s%s", COLOR_CAT ,COLOR_PRIMARY, COLOR_SECONDARY ,cpu());
+printf("%s     (° o 7       \t%s\uf017  %s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, uptime());
+printf("%s      |'-'\"~.  ,  \t%s\uf085  %s%s", COLOR_CAT,COLOR_PRIMARY, COLOR_SECONDARY, distro());
+printf("%s      Uu^~(_J._.\" \t%s\uf2d2  %s%s\n\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, wm());
+}
+else {
+    printf("[ERROR]: You forgot to specify if USE_FONTAWESOME_ICONS was %strue %sor %sfalse %s", COLOR_LIGHT_GREEN, COLOR_DEFAULT, COLOR_RED, COLOR_DEFAULT);
+}
+
 
 return 0;
 }
