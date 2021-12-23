@@ -17,6 +17,11 @@ sudo mv cat-fetch /bin/
 
 after that, you can run catfetch with `cat-fetch` or whatever your compiled binary name was.
 
+# Config
+
+to config it, just modify and rebuild the program.
+
+
 # TODO
 
 - [x] add color support
