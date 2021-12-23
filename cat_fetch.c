@@ -9,7 +9,7 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 // Thanks to Zelis for helping me figure out what was a macro
 #define BUFFER char * buffer = malloc((sizeof(char) * 256))
 
-// Libs [just 3!]
+// Libs [just 4!]
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
