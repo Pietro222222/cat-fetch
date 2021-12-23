@@ -8,12 +8,33 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 
 // Thanks to Zelis for helping me figure out what was a macro
 #define BUFFER char * buffer = malloc((sizeof(char) * 256))
+#define COLOR_DEFAULT "\e[39m"
+#define COLOR_BLACK "\e[30m"
+#define COLOR_RED "\e[31m"
+#define COLOR_GREEN "\e[32m"
+#define COLOR_YELLOW "\e[33m"
+#define COLOR_BLUE "\e[34m"
+#define COLOR_MAGENTA "\e[35m"
+#define COLOR_CYAN "\e[36m"
+#define COLOR_LIGHT_GRAY "\e[37m"
+#define COLOR_DARK_GRAY "\e[90m"
+#define COLOR_LIGHT_RED "\e[91m"
+#define COLOR_LIGHT_GREEN "\e[92m"
+#define COLOR_LIGHT_YELLOW "\e[93m"
+#define COLOR_LIGHT_BLUE "\e[94m"
+#define COLOR_LIGHT_MAGENTA "\e[95m"
+#define COLOR_LIGHT_CYAN "\e[96m"
+#define COLOR_WHITE "\e[97m"
+
+// define your color
+const char * COLOR_PRIMARY = COLOR_CYAN;
+const char * COLOR_SECONDARY = COLOR_LIGHT_YELLOW;
+const char * COLOR_CAT = COLOR_BLUE;
 
 // Libs [just 4!]
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <string.h>
 #include <string.h>
 
 // Uppercase function because yes
@@ -80,13 +101,15 @@ char * wm() {
     return getenv("DESKTOP_SESSION");
 }
 
+
 // MAIN FUNCTION
 int main() {
+
 BUFFER;
-printf(" /'._        \t%s", cpu());
-printf("(° o 7       \t%s\n", uptime());
-printf(" |'-'\"~.  ,  \t%s", distro());
-printf(" Uu^~(_J._.\" \t%s\n", wm());
+printf("%s /'._        \t%scpu: \t%s%s", COLOR_CAT ,COLOR_PRIMARY, COLOR_SECONDARY ,cpu());
+printf("%s(° o 7       \t%suptime: %s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, uptime());
+printf("%s |'-'\"~.  ,  \t%sdistro: %s%s", COLOR_CAT,COLOR_PRIMARY, COLOR_SECONDARY, distro());
+printf("%s Uu^~(_J._.\" \t%swm: \t%s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, wm());
 
 return 0;
 }
