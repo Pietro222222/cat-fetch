@@ -13,3 +13,5 @@ To use this without writing the path to the compiled binary every time, you can 
 ```
 sudo mv cat-fetch /bin/
 ```
+
+after that, you can run catfetch with `cat-fetch` or whatever your compiled binary name was.
