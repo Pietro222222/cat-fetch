@@ -77,14 +77,7 @@ char * distro() {
 
 // Window Manager info function
 char * wm() {
-    if (strlen(getenv("XDG_SESSION_DESKTOP")) > 0) {
-        return getenv("XDG_SESSION_DESKTOP");
-    }else if (strlen(getenv("GDMSESSION")) > 0) {
-        return getenv("GDMSESSION");
-    }else {
-        return getenv("DESKTOP_SESSION");
-    }
-    return (char*) "unknown";
+    return getenv("DESKTOP_SESSION");
 }
 
 // MAIN FUNCTION
