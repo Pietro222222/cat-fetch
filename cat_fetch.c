@@ -5,12 +5,12 @@
 Uu^~C_J._."  
 cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/51151-ascii-art>  
 */
-// Libs [just 4!]
+// Libs [just 5!]
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-
+#include "config.h"
 // Thanks to Zelis for helping me figure out what was a macro
 #define BUFFER char * buffer = malloc((sizeof(char) * 256))
 #define COLOR_DEFAULT "\e[39m"
@@ -106,27 +106,26 @@ char * wm() {
 
 // MAIN FUNCTION. oh really?
 int main(int argc, char** argv) {
+    size_t elements;
+    Config* cfg = get_config(parse_file(get_file_content(get_config_path()), &elements), elements);
+    BUFFER;
 
-BUFFER;
-if(USE_FONTAWESOME_ICONS == false)
-{
-puts("");
-printf("%s       /'._        \t%scpu: \t%s%s", COLOR_CAT ,COLOR_PRIMARY, COLOR_SECONDARY ,cpu());
-printf("%s      (° o 7       \t%suptime: %s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, uptime());
-printf("%s       |'-'\"~.  ,  \t%sdistro: %s%s", COLOR_CAT,COLOR_PRIMARY, COLOR_SECONDARY, distro());
-printf("%s       Uu^~(_J._.\" \t%swm: \t%s%s\n\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, wm());
-}
-else if(USE_FONTAWESOME_ICONS == true) {
-puts("");
-printf("%s      /'._        \t%s\uf2db  %s%s", COLOR_CAT ,COLOR_PRIMARY, COLOR_SECONDARY ,cpu());
-printf("%s     (° o 7       \t%s\uf017  %s%s\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, uptime());
-printf("%s      |'-'\"~.  ,  \t%s\uf085  %s%s", COLOR_CAT,COLOR_PRIMARY, COLOR_SECONDARY, distro());
-printf("%s      Uu^~(_J._.\" \t%s\uf2d2  %s%s\n\n",COLOR_CAT ,COLOR_PRIMARY , COLOR_SECONDARY, wm());
-}
-else {
-    printf("[ERROR]: You forgot to specify if USE_FONTAWESOME_ICONS was %strue %sor %sfalse %s", COLOR_LIGHT_GREEN, COLOR_DEFAULT, COLOR_RED, COLOR_DEFAULT);
-}
+    if(cfg->awesome_icons == false)
+    {
+        puts("");
+        printf("%s       /'._        \t%scpu: \t%s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color ,cpu());
+        printf("%s      (° o 7       \t%suptime: %s%s\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, uptime());
+        printf("%s       |'-'\"~.  ,  \t%sdistro: %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color, distro());
+        printf("%s       Uu^~(_J._.\" \t%swm: \t%s%s\n\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, wm());
+    }
+    else {
+        puts("");
+        printf("%s      /'._        \t%s\uf2db  %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color ,cpu());
+        printf("%s     (° o 7       \t%s\uf017  %s%s\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, uptime());
+        printf("%s      |'-'\"~.  ,  \t%s\uf085  %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color, distro());
+        printf("%s      Uu^~(_J._.\" \t%s\uf2d2  %s%s\n\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, wm());
+    }
 
 
-return 0;
+    return 0;
 }

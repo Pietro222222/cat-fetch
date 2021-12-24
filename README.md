@@ -5,10 +5,10 @@ A cute, minimal fetch made in C [as my first C program]
 Also Victor Mono is the recomened font for the cat art.
 
 # Building
-To build, you can either use the `install.sh` script, or use `gcc` (make sure you are in the same folder as the file!):
+To build, you can either use the `install.sh` script, or use `clang` (GCC doesnt work, idk why) (make sure you are in the same folder as the file!):
 
 ```
-gcc cat_fetch.c -o cat-fetch
+clang cat_fetch.c config.c -o cat-fetch
 ```
 To use this without writing the path to the compiled binary every time, you can move it to `/bin/` using `sudo`:
 ```
@@ -28,3 +28,29 @@ to config it, just modify and rebuild the program. Use the `install.sh` script t
 - [ ] merge with watts version
 - [ ] fix DWM bug
 - [ ] Add more cats with a `--random` flag option
+
+
+# Colors
+
+these are the colors you can use in the config file
+```
+default
+black
+red
+green
+yellow
+blue
+magenta
+cyan
+light_gray
+dark_gray
+light_red
+light_green
+light_yellow
+light_blue
+light_magenta
+light_cyan
+white
+```
+
+### NOTE: YOU SHOULD NOT USE UPPERCASE 
