@@ -13,31 +13,6 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 #include "config.h"
 // Thanks to Zelis for helping me figure out what was a macro
 #define BUFFER char * buffer = malloc((sizeof(char) * 256))
-#define COLOR_DEFAULT "\e[39m"
-#define COLOR_BLACK "\e[30m"
-#define COLOR_RED "\e[31m"
-#define COLOR_GREEN "\e[32m"
-#define COLOR_YELLOW "\e[33m"
-#define COLOR_BLUE "\e[34m"
-#define COLOR_MAGENTA "\e[35m"
-#define COLOR_CYAN "\e[36m"
-#define COLOR_LIGHT_GRAY "\e[37m"
-#define COLOR_DARK_GRAY "\e[90m"
-#define COLOR_LIGHT_RED "\e[91m"
-#define COLOR_LIGHT_GREEN "\e[92m"
-#define COLOR_LIGHT_YELLOW "\e[93m"
-#define COLOR_LIGHT_BLUE "\e[94m"
-#define COLOR_LIGHT_MAGENTA "\e[95m"
-#define COLOR_LIGHT_CYAN "\e[96m"
-#define COLOR_WHITE "\e[97m"
-
-// define your color
-const char * COLOR_PRIMARY = COLOR_LIGHT_GREEN;
-const char * COLOR_SECONDARY = COLOR_LIGHT_YELLOW;
-const char * COLOR_CAT = COLOR_BLUE;
-
-// use fontawesome-icons:
-const bool USE_FONTAWESOME_ICONS = true;
 
 // Uppercase function because yes
 char uppercase(char letter) {
