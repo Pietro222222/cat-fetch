@@ -1,3 +1,4 @@
+// COMMENTS BY PIETRO DON'T LOOK AT ME
 #include <stdio.h>
 #include "config.h"
 #include <stdlib.h>
