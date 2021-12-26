@@ -14,7 +14,7 @@ after that, you can run catfetch with `cat-fetch` or whatever your compiled bina
 # Config
 
 to configure it, use the `catfetch.conf` file, situated in `~/.config/catfetch.conf`.
-Here are some examples on how to configure it.
+Here are some examples on how you can configure the fetch
 
 ## Colors
 
