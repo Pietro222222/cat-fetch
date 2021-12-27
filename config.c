@@ -145,9 +145,9 @@ char* get_color(char* name) {
 Config* get_config(ParsedElement* elements, size_t length) {
     Config* cfg = malloc(sizeof(Config));
     //if config doesnt have this fields then we're going to give 'em a fallback value (default)
-    strcpy(cfg->primary_color, COLOR_CYAN); 
-    strcpy(cfg->secondary_color, COLOR_LIGHT_YELLOW);
-    strcpy(cfg->cat_color, COLOR_BLUE);
+    cfg->primary_color = COLOR_CYAN; 
+    cfg->secondary_color = COLOR_LIGHT_YELLOW;
+    cfg->cat_color, COLOR_BLUE;
     cfg->awesome_icons = false;
     for(int i = 0; i < length; i++) {
         ParsedElement element = elements[i];
