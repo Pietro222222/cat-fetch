@@ -75,7 +75,7 @@ char * distro() {
 // Window Manager info function
 char * wm() {
     return getenv("DESKTOP_SESSION");
-}
+} //biggest function i've ever seen, honestly i dont know how the compiler compiles it in less than a second, my brain needs 2 years to read this and understand the big brain person who made this.
 
 
 // MAIN FUNCTION. oh really?
@@ -104,5 +104,6 @@ int main(int argc, char** argv) {
     free(cpu_fetch);
     free(uptime_fetch);
     free(distro_fetch);
+    free(cfg);
     return 0;
 }

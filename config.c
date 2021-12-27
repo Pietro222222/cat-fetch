@@ -34,6 +34,7 @@ char* get_file_content(char* filename) {
     }
 
     content[length] = '\0'; //put zero at the end because nobody wants trash
+    free(filename);
     return content; //who cares about freeing stuff, this program runs in like, half a second
 }
 
@@ -98,6 +99,7 @@ ParsedElement* parse_file(char* content, size_t* length) {
         c = content[byte];
     }
     *length = elements_length; //thats the way 
+    free(content);
     return elements;
 }
 
@@ -168,5 +170,6 @@ Config* get_config(ParsedElement* elements, size_t length) {
             printf("%s is invalid", element.name);
         }
     };
+    free(elements);
     return cfg; //the compiler is screamimg on me
 }
