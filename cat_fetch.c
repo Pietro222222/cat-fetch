@@ -12,32 +12,6 @@ cute cat made by me! Inspired from this image: <https://knowyourmeme.com/photos/
 #include <string.h>
 #include "config.h"
 // Thanks to Zelis for helping me figure out what was a macro
-#define BUFFER char * buffer = malloc((sizeof(char) * 256))
-#define COLOR_DEFAULT "\e[39m"
-#define COLOR_BLACK "\e[30m"
-#define COLOR_RED "\e[31m"
-#define COLOR_GREEN "\e[32m"
-#define COLOR_YELLOW "\e[33m"
-#define COLOR_BLUE "\e[34m"
-#define COLOR_MAGENTA "\e[35m"
-#define COLOR_CYAN "\e[36m"
-#define COLOR_LIGHT_GRAY "\e[37m"
-#define COLOR_DARK_GRAY "\e[90m"
-#define COLOR_LIGHT_RED "\e[91m"
-#define COLOR_LIGHT_GREEN "\e[92m"
-#define COLOR_LIGHT_YELLOW "\e[93m"
-#define COLOR_LIGHT_BLUE "\e[94m"
-#define COLOR_LIGHT_MAGENTA "\e[95m"
-#define COLOR_LIGHT_CYAN "\e[96m"
-#define COLOR_WHITE "\e[97m"
-
-// define your color
-const char * COLOR_PRIMARY = COLOR_LIGHT_GREEN;
-const char * COLOR_SECONDARY = COLOR_LIGHT_YELLOW;
-const char * COLOR_CAT = COLOR_BLUE;
-
-// use fontawesome-icons:
-const bool USE_FONTAWESOME_ICONS = true;
 
 // Uppercase function because yes
 char uppercase(char letter) {
@@ -48,14 +22,14 @@ char uppercase(char letter) {
 // CPU info function
 char * cpu() {
     FILE* cpu;
-    BUFFER;
+    char * cpu_buffer = malloc((sizeof(char) * 256));
     cpu = fopen("/proc/cpuinfo", "r");
     for (int i=0; i < 5; i++) {
-        fgets(buffer, 256, (FILE *) cpu);
+        fgets(cpu_buffer, 256, (FILE *) cpu);
     }
-    memmove(buffer, buffer+13, strlen(buffer));
+    memmove(cpu_buffer, cpu_buffer+13, strlen(cpu_buffer));
     fclose(cpu);
-    return buffer;
+    return cpu_buffer;
 }
 
 // Uptime info function
@@ -66,36 +40,36 @@ char * uptime() {
     int j = 0;
     char space[] = {' '};
     FILE* uptime;
-    BUFFER;
+    char * uptime_buffer = malloc((sizeof(char) * 256));
     uptime = fopen("/proc/uptime", "r");
-    fscanf(uptime, "%s", buffer);
-    hours = (atoi(buffer)/3600); 
-	minutes = (atoi(buffer) - (3600*hours))/60;
-	seconds = (atoi(buffer) - (3600*hours) - (minutes*60));
-    sprintf(buffer, "%12dh %dm %ds", hours, minutes, seconds);
+    fscanf(uptime, "%s", uptime_buffer);
+    hours = (atoi(uptime_buffer)/3600); 
+	minutes = (atoi(uptime_buffer) - (3600*hours))/60;
+	seconds = (atoi(uptime_buffer) - (3600*hours) - (minutes*60));
+    sprintf(uptime_buffer, "%12dh %dm %ds", hours, minutes, seconds);
     while (j < 1)
     {
-    memmove(buffer, buffer+1, strlen(buffer));       
-    if (buffer[0] != space[0]) {
+    memmove(uptime_buffer, uptime_buffer+1, strlen(uptime_buffer));       
+    if (uptime_buffer[0] != space[0]) {
         j ++;
         }
     }
     fclose(uptime);
-    return buffer;
+    return uptime_buffer;
 }
 
 // Distro name function
 char * distro() {
-    BUFFER;
+    char * distro_buffer = malloc((sizeof(char) * 256));
     FILE* distro;
     distro = fopen("/etc/os-release", "r");
     for (int i=0; i < 3; i++) {
-        fgets(buffer, 256, (FILE *) distro);
+        fgets(distro_buffer, 256, (FILE *) distro);
     }
-    memmove(buffer, buffer+3, strlen(buffer));
-    buffer[0] = uppercase(buffer[0]);
+    memmove(distro_buffer, distro_buffer+3, strlen(distro_buffer));
+    distro_buffer[0] = uppercase(distro_buffer[0]);
     fclose(distro);
-    return buffer;
+    return distro_buffer;
 }
 
 // Window Manager info function
@@ -108,24 +82,27 @@ char * wm() {
 int main(int argc, char** argv) {
     size_t elements;
     Config* cfg = get_config(parse_file(get_file_content(get_config_path()), &elements), elements);
-    BUFFER;
-
+    char * cpu_fetch = cpu();
+    char * uptime_fetch = uptime();
+    char * distro_fetch = distro();
+    char * wm_fetch = wm();
     if(cfg->awesome_icons == false)
     {
         puts("");
-        printf("%s       /'._        \t%scpu: \t%s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color ,cpu());
-        printf("%s      (° o 7       \t%suptime: %s%s\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, uptime());
-        printf("%s       |'-'\"~.  ,  \t%sdistro: %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color, distro());
-        printf("%s       Uu^~(_J._.\" \t%swm: \t%s%s\n\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, wm());
+        printf("%s       /'._        \t%scpu: \t%s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color , cpu_fetch);
+        printf("%s      (° o 7       \t%suptime: %s%s\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, uptime_fetch);
+        printf("%s       |'-'\"~.  ,  \t%sdistro: %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color, distro_fetch);
+        printf("%s       Uu^~(_J._.\" \t%swm: \t%s%s\n\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, wm_fetch);
     }
     else {
         puts("");
-        printf("%s      /'._        \t%s\uf2db  %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color ,cpu());
-        printf("%s     (° o 7       \t%s\uf017  %s%s\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, uptime());
-        printf("%s      |'-'\"~.  ,  \t%s\uf085  %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color, distro());
-        printf("%s      Uu^~(_J._.\" \t%s\uf2d2  %s%s\n\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, wm());
+        printf("%s      /'._        \t%s\uf2db  %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color , cpu_fetch);
+        printf("%s     (° o 7       \t%s\uf017  %s%s\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, uptime_fetch);
+        printf("%s      |'-'\"~.  ,  \t%s\uf085  %s%s", cfg->cat_color ,cfg->primary_color, cfg->secondary_color, distro_fetch);
+        printf("%s      Uu^~(_J._.\" \t%s\uf2d2  %s%s\n\n",cfg->cat_color ,cfg->primary_color, cfg->secondary_color, wm_fetch);
     }
-
-
+    free(cpu_fetch);
+    free(uptime_fetch);
+    free(distro_fetch);
     return 0;
 }
